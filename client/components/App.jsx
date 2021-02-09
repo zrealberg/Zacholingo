@@ -1,26 +1,45 @@
 import React from "react";
 import Start from "./Start.jsx";
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      1: '',
-      2: '',
-      3: '',
-      4: '',
-      5: ''
+      'one': '',
+      'two': '',
+      'three': '',
+      'four': '',
+      'five': ''
     };
     this.handleInputWords = this.handleInputWords.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   handleInputWords(event) {
-    console.log('function is called', event.target.value);
     const target = event.target;
     const name = target.name;
     this.setState({
         [name]: event.target.value
     });
+  }
+  submit() {
+    console.log('submit called!');
+    axios.get('/wtt', {
+      params: {
+        one: this.state.one,
+        two: this.state.two,
+        three: this.state.three,
+        four: this.state.four,
+        five: this.state.five
+      }
+    })
+    .then((data) => {
+      console.log('data back from the server, in App.jsx', data);
+    })
+    .catch((err) => {
+      console.error(err);
+    })
   }
 
   render() {
@@ -28,7 +47,10 @@ class App extends React.Component {
       <div>
         <h1>Zacholingo</h1>
         <div>
-          <Start handleInputWords={this.handleInputWords}/>
+          <Start
+            handleInputWords={this.handleInputWords}
+            submit={this.submit}
+          />
         </div>
       </div>
     );
