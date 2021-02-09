@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/wtt', (req, res) => {
-  console.log('you hit the wtt route', req.query);
+  // console.log('you hit the wtt route', req.query);
   translator(req.query);
   res.json('WTT!');
 })
