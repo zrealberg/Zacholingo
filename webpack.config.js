@@ -10,7 +10,7 @@ module.exports = {
     path: OUT_DIR,
     filename: 'main.js'
   },
-  watch: false,
+  watch: true,
   module: {
     rules: [
       {
