@@ -1,0 +1,29 @@
+{
+  "name": "zacholingo",
+  "version": "1.0.0",
+  "description": "spanish vocab game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zrealberg/Zacholingo.git"
+  },
+  "author": "Zach Realberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zrealberg/Zacholingo/issues"
+  },
+  "homepage": "https://github.com/zrealberg/Zacholingo#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.21.2",
+    "webpack-cli": "^4.5.0"
+  }
+}
