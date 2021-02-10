@@ -2,15 +2,16 @@ import React from "react";
 import Start from "./Start.jsx";
 import axios from "axios";
 import Study from './Study';
+import Gameplay from './Gameplay';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      score: 0,
       round: 1,
       showStart: true,
       showStudy: false,
+      showGameplay: false,
       english: {
         one: "",
         two: "",
@@ -21,6 +22,7 @@ class App extends React.Component {
     };
     this.handleInputWords = this.handleInputWords.bind(this);
     this.submit = this.submit.bind(this);
+    this.beginGameplay = this.beginGameplay.bind(this);
   }
 
   handleInputWords(event) {
@@ -53,6 +55,14 @@ class App extends React.Component {
       });
   }
 
+  beginGameplay() {
+    console.log('ive been called');
+    this.setState({
+      showStudy: false,
+      showGameplay: true
+    })
+  }
+
   render() {
     return (
       <div>
@@ -66,6 +76,13 @@ class App extends React.Component {
           )}
           {this.state.showStudy && (
             <Study
+              engWords={this.state.english}
+              spaWords={this.state.spanish}
+              beginGameplay={this.beginGameplay}
+            />
+          )}
+          {this.state.showGameplay && (
+            <Gameplay
               engWords={this.state.english}
               spaWords={this.state.spanish}
             />

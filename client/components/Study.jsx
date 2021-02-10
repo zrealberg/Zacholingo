@@ -1,7 +1,7 @@
 import React from "react";
 import OneWord from './OneWord'
 
-const Study = ({ engWords, spaWords }) => {
+const Study = ({ engWords, spaWords, beginGameplay }) => {
 
   var engWordsArr = Object.values(engWords);
   var ewArr = engWordsArr.map((word) => (
@@ -25,6 +25,8 @@ const Study = ({ engWords, spaWords }) => {
       </div>
       {ewArr}
       {swArr}
+    <br></br>
+    <button onClick={beginGameplay}>Click me to begin the quiz</button>
     </div>
   )
 }
