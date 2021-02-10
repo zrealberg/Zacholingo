@@ -7,9 +7,13 @@ class RoundOne extends React.Component {
     super(props);
 
     this.state = {
-      altWords: {}
-      //needs to be an object, indexes from 1-5 (0-4?), an array with two words per key
-
+      altWords: {
+        1: ['ab', 'cd'],
+        2: ['ab', 'cd'],
+        3: ['ab', 'cd'],
+        4: ['ab', 'cd'],
+        5: ['ab', 'cd']
+      }
     }
   }
 
@@ -41,27 +45,27 @@ class RoundOne extends React.Component {
   }
 
   render() {
-    console.log('RoundOne, render called');
     const spaWordsArray = [];
     //turn the spanish words object into an array with the index and values as couplets therein
-    console.log('this.props.spaWords', this.props.spaWords);
+    // console.log('this.props.spaWords', this.props.spaWords);
     for (var key in this.props.spaWords) {
       spaWordsArray.push([key, this.props.spaWords[key]])
     }
     console.log('spaWordsArray', spaWordsArray);
-    const questionSet = spaWordsArray.map((word, index) => (
+    // [["one", "sí"], ["two", "gato"] .. . ]
+    const questionSet = spaWordsArray.map((couplet, index) => (
       <div>
         <Question
-          eword={this.props.engWords[index]}
-          sword={word}
-          alts={this.state.altWords[index]}
+          eword={this.props.engWords[couplet[0]]}
+          sword={couplet[1]}
+          alts={this.state.altWords[index + 1]}
         />
       </div>
-    ))
+    ));
     return (
       <div>
         Select the correct answer for each word.
-
+        {questionSet}
       </div>
     );
   }
