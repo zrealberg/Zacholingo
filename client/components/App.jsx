@@ -38,7 +38,6 @@ class App extends React.Component {
   }
 
   submit() {
-    console.log("submit called!");
     axios
       .get("/wtt", {
         params: this.state.english

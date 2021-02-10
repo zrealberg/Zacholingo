@@ -12,6 +12,7 @@ const wordFetcher = (quant, flm) => {
   }
   //else
     //
+  console.log('spanishWords, result', result);
   return result;
 }
 
