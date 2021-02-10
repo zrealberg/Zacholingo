@@ -1,16 +1,23 @@
 import React from "react";
 import Start from "./Start.jsx";
-import axios from 'axios';
+import axios from "axios";
+import Study from './Study';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      'one': '',
-      'two': '',
-      'three': '',
-      'four': '',
-      'five': ''
+      score: 0,
+      round: 1,
+      showStart: true,
+      showStudy: false,
+      english: {
+        one: "",
+        two: "",
+        three: "",
+        four: "",
+        five: ""
+      }
     };
     this.handleInputWords = this.handleInputWords.bind(this);
     this.submit = this.submit.bind(this);
@@ -19,27 +26,31 @@ class App extends React.Component {
   handleInputWords(event) {
     const target = event.target;
     const name = target.name;
+    var english = this.state.english;
+    english[name] = event.target.value
     this.setState({
-        [name]: event.target.value
+      english
     });
+
+    event.preventDefault();
   }
+
   submit() {
-    console.log('submit called!');
-    axios.get('/wtt', {
-      params: {
-        one: this.state.one,
-        two: this.state.two,
-        three: this.state.three,
-        four: this.state.four,
-        five: this.state.five
-      }
-    })
-    .then((data) => {
-      console.log('data back from the server, in App.jsx', data);
-    })
-    .catch((err) => {
-      console.error(err);
-    })
+    console.log("submit called!");
+    axios
+      .get("/wtt", {
+        params: this.state.english
+      })
+      .then((data) => {
+        this.setState({
+          spanish: data.data,
+          showStart: false,
+          showStudy: true
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   render() {
@@ -47,10 +58,18 @@ class App extends React.Component {
       <div>
         <h1>Zacholingo</h1>
         <div>
-          <Start
-            handleInputWords={this.handleInputWords}
-            submit={this.submit}
-          />
+          {this.state.showStart && (
+            <Start
+              handleInputWords={this.handleInputWords}
+              submit={this.submit}
+            />
+          )}
+          {this.state.showStudy && (
+            <Study
+              engWords={this.state.english}
+              spaWords={this.state.spanish}
+            />
+          )}
         </div>
       </div>
     );

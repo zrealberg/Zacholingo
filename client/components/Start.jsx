@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const Start = ({ handleInputWords, submit }) => {
   return (
     <div>

@@ -9,6 +9,7 @@ const translator = async function(wordObj) {
   try {
     for (const key in wordObj) {
       const word = wordObj[key];
+      console.log('here is one of my words', word);
       await axios.get(`https://dictionaryapi.com/api/v3/references/spanish/json/${word}?key=d0544302-c7cf-463b-ba99-844abbb4303c`)
           .then((result) => {
             console.log('result.data[0].shortdef[0] from the get to MW', result.data[0].shortdef[0]);
