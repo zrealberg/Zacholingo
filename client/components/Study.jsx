@@ -6,14 +6,14 @@ const Study = ({ engWords, spaWords, beginGameplay }) => {
   var engWordsArr = Object.values(engWords);
   var ewArr = engWordsArr.map((word) => (
     <div>
-      <OneWord word={word}/>
+      <OneWord key={word} word={word}/>
     </div>
   ))
 
   var spaWordsArr = Object.values(spaWords);
   var swArr = spaWordsArr.map((word) => (
     <div>
-      <OneWord word={word}/>
+      <OneWord key={word} word={word}/>
     </div>
   ))
 
