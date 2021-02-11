@@ -64,9 +64,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div class='application'>
-        <h1 class='header'>Zacholingo</h1>
-        <div>
+      <div className='application'>
+        <h1 className='header'>Zacholingo</h1>
+        <div className='content1'>
           {this.state.showStart && (
             <Start
               handleInputWords={this.handleInputWords}

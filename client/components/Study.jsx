@@ -23,8 +23,12 @@ const Study = ({ engWords, spaWords, beginGameplay }) => {
       <div>Here are the words you selected and their translations, as provided by
         Merriam Webster
       </div>
-      {ewArr}
-      {swArr}
+      <div className='engStudy'>
+        {ewArr}
+      </div>
+      <div className='spaStudy'>
+        {swArr}
+      </div>
     <br></br>
     <button onClick={beginGameplay}>Click me to begin the quiz</button>
     </div>

@@ -2,9 +2,9 @@ import React from "react";
 
 const OneWord = ({ word }) => {
   return (
-    <h4>
+    <div>
       {word}
-    </h4>
+    </div>
   )
 }
 
