@@ -9,14 +9,18 @@ const wordFetcher = (quant, flm) => {
       // console.log('random index value', index);
       result.push(words[index])
     }
+  } else {
+    for (var i = 0; i < quant; i++) {
+      const index = Math.floor(Math.random() * Math.floor(words.length))
+      result.push(words[index])
+    }
   }
-  //else
-    //
-  // console.log('spanishWords, result', result);
   return result;
 }
 
 module.exports = wordFetcher;
+
+
 
 const words = [
   'abril',
