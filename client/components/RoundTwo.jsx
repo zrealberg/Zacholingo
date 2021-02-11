@@ -29,6 +29,7 @@ class RoundTwo extends React.Component {
     this.selectFive = this.selectFive.bind(this);
     this.submitRdTwo = this.submitRdTwo.bind(this);
   }
+
   componentDidMount() {
     axios
       .get("/words", {
@@ -52,7 +53,6 @@ class RoundTwo extends React.Component {
         console.log("something went wrong fetching words");
       });
   }
-
 
   selectOne(event) {
     this.setState({
@@ -89,19 +89,19 @@ class RoundTwo extends React.Component {
     var spanishWords = Object.values(this.props.spaWords);
 
     if (this.state.selectedAns1 === spanishWords[0]) {
-      this.state.score++;
+      this.state.score += 3;
     }
     if (this.state.selectedAns2 === spanishWords[1]) {
-      this.state.score++;
+      this.state.score += 3;
     }
     if (this.state.selectedAns3 === spanishWords[2]) {
-      this.state.score++;
+      this.state.score += 3;
     }
     if (this.state.selectedAns4 === spanishWords[3]) {
-      this.state.score++;
+      this.state.score += 3;
     }
     if (this.state.selectedAns5 === spanishWords[4]) {
-      this.state.score++;
+      this.state.score += 3;
     }
     this.props.updateScore(this.state.score);
     this.setState({
@@ -121,8 +121,8 @@ class RoundTwo extends React.Component {
         {this.state.showScore && (
           <div>
             <h3>You scored {this.state.score} points this round, good job!</h3>
-            <button onClick={this.props.startRoundTwo}>
-              Click here to move on to Round Two
+            <button onClick={this.props.endGame}>
+              Click here to move on to complete the game
             </button>
           </div>
         )}
@@ -167,18 +167,17 @@ class RoundTwo extends React.Component {
             <button className={qTwoAns[2]} onClick={this.selectTwo}>
               {qTwoAns[2]}
             </button>
-            <button className={qTwoAns[3]} onClick={this.selectOne}>
+            <button className={qTwoAns[3]} onClick={this.selectTwo}>
               {qTwoAns[3]}
             </button>
-            <button className={qTwoAns[4]} onClick={this.selectOne}>
+            <button className={qTwoAns[4]} onClick={this.selectTwo}>
               {qTwoAns[4]}
             </button>
           </div>
           <div>
             {/* q3 */}
             <div>
-              this.select the correct translation for{" "}
-              {this.props.engWords["three"]}
+              Select the correct translation for {this.props.engWords["three"]}
             </div>
             <br></br>
             <button className={qThreeAns[0]} onClick={this.selectThree}>
@@ -190,18 +189,17 @@ class RoundTwo extends React.Component {
             <button className={qThreeAns[2]} onClick={this.selectThree}>
               {qThreeAns[2]}
             </button>
-            <button className={qThreeAns[3]} onClick={this.selectOne}>
+            <button className={qThreeAns[3]} onClick={this.selectThree}>
               {qThreeAns[3]}
             </button>
-            <button className={qThreeAns[4]} onClick={this.selectOne}>
+            <button className={qThreeAns[4]} onClick={this.selectThree}>
               {qThreeAns[4]}
             </button>
           </div>
           <div>
             {/* q4 */}
             <div>
-              this.select the correct translation for{" "}
-              {this.props.engWords["four"]}
+              Select the correct translation for {this.props.engWords["four"]}
             </div>
             <br></br>
             <button className={qFourAns[0]} onClick={this.selectFour}>
@@ -213,18 +211,17 @@ class RoundTwo extends React.Component {
             <button className={qFourAns[2]} onClick={this.selectFour}>
               {qFourAns[2]}
             </button>
-            <button className={qFourAns[3]} onClick={this.selectOne}>
+            <button className={qFourAns[3]} onClick={this.selectFour}>
               {qFourAns[3]}
             </button>
-            <button className={qFourAns[4]} onClick={this.selectOne}>
+            <button className={qFourAns[4]} onClick={this.selectFour}>
               {qFourAns[4]}
             </button>
           </div>
           <div>
             {/* q5 */}
             <div>
-              this.select the correct translation for{" "}
-              {this.props.engWords["five"]}
+              Select the correct translation for {this.props.engWords["five"]}
             </div>
             <br></br>
             <button className={qFiveAns[0]} onClick={this.selectFive}>
@@ -236,16 +233,19 @@ class RoundTwo extends React.Component {
             <button className={qFiveAns[2]} onClick={this.selectFive}>
               {qFiveAns[2]}
             </button>
-            <button className={qFiveAns[3]} onClick={this.selectOne}>
+            <button className={qFiveAns[3]} onClick={this.selectFive}>
               {qFiveAns[3]}
             </button>
-            <button className={qFiveAns[4]} onClick={this.selectOne}>
+            <button className={qFiveAns[4]} onClick={this.selectFive}>
               {qFiveAns[4]}
             </button>
           </div>
         </div>
         <br></br>
-        <button onClick={this.submitRdTwo}>Submit Answer for this round</button>
+        {
+        !this.state.showScore &&
+        <button onClick={this.submitRdTwo}>Submit answers for this round</button>
+        }
       </div>
     )
   }

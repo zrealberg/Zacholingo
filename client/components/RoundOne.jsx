@@ -84,6 +84,7 @@ class RoundOne extends React.Component {
     });
     event.preventDefault();
   }
+
   submitRdOne() {
     var spanishWords = Object.values(this.props.spaWords);
 
@@ -236,7 +237,10 @@ class RoundOne extends React.Component {
           </div>
         </div>
         <br></br>
-        <button onClick={this.submitRdOne}>Submit Answer for this round</button>
+        {
+        !this.state.showScore &&
+        <button onClick={this.submitRdOne}>Submit Answers for this round</button>
+        }
       </div>
     );
   }

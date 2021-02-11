@@ -1,7 +1,7 @@
 import React from "react";
 import RoundOne from './RoundOne';
 import RoundTwo from './RoundTwo';
-// import RoundThree from './RoundThree';
+import EndScreen from './EndScreen';
 
 class Gameplay extends React.Component {
   constructor(props){
@@ -11,7 +11,7 @@ class Gameplay extends React.Component {
       score: 0,
       showRoundOne: true,
       showRoundTwo: false,
-      showRoundThree: false
+      showEndScreen: false
     }
     this.startRoundTwo = this.startRoundTwo.bind(this);
     this.updateScore = this.updateScore.bind(this);
@@ -33,7 +33,13 @@ class Gameplay extends React.Component {
   }
   endGame(){
     console.log('game over');
+    this.setState({
+      showRoundOne: false,
+      showRoundTwo: false,
+      showEndScreen: true
+    })
   }
+
 
   render() {
     return (
@@ -53,6 +59,11 @@ class Gameplay extends React.Component {
           spaWords={this.props.spaWords}
           endGame={this.endGame}
           updateScore={this.updateScore}
+        />
+        }
+        {this.state.showEndScreen &&
+        <RoundTwo
+          score={this.state.score}
         />
         }
       </div>
