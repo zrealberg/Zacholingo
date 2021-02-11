@@ -14,6 +14,7 @@ class RoundOne extends React.Component {
         4: ['ab', 'cd'],
         5: ['ab', 'cd']
       },
+      score: 0,
       selectedAns1: '',
       selectedAns2: '',
       selectedAns3: '',
@@ -85,12 +86,25 @@ class RoundOne extends React.Component {
     event.preventDefault();
   }
   submitRdOne(){
-    console.log('submitRdOne called');
     var spanishWords = Object.values(this.props.spaWords);
-    console.log('spanishWords', spanishWords);
 
-    //compare state items to this.props.spaWords,
-    //if match, this.state.score++
+    if (this.state.selectedAns1 === spanishWords[0]){
+      this.state.score++
+    }
+    if (this.state.selectedAns2 === spanishWords[1]){
+      this.state.score++
+    }
+    if (this.state.selectedAns3 === spanishWords[2]){
+      this.state.score++
+    }
+    if (this.state.selectedAns4 === spanishWords[3]){
+      this.state.score++
+    }
+    if (this.state.selectedAns5 === spanishWords[4]){
+      this.state.score++
+    }
+    console.log('score post tally', this.state.score);
+
   }
 
   render() {
