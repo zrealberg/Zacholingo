@@ -238,7 +238,7 @@ class RoundOne extends React.Component {
         </div>
         <br></br>
         {
-        !this.state.showScore &&
+        !(this.state.showScore) &&
         <button onClick={this.submitRdOne}>Submit Answers for this round</button>
         }
       </div>

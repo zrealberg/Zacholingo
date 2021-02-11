@@ -110,6 +110,7 @@ class RoundTwo extends React.Component {
   }
 
   render() {
+
     var qOneAns = this.state.altWords[1].concat(this.props.spaWords["one"]);
     var qTwoAns = this.state.altWords[2].concat(this.props.spaWords["two"]);
     var qThreeAns = this.state.altWords[3].concat(this.props.spaWords["three"]);
@@ -243,7 +244,7 @@ class RoundTwo extends React.Component {
         </div>
         <br></br>
         {
-        !this.state.showScore &&
+        !(this.state.showScore) &&
         <button onClick={this.submitRdTwo}>Submit answers for this round</button>
         }
       </div>

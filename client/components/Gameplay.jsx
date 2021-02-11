@@ -34,7 +34,6 @@ class Gameplay extends React.Component {
   endGame(){
     console.log('game over');
     this.setState({
-      showRoundOne: false,
       showRoundTwo: false,
       showEndScreen: true
     })
@@ -62,7 +61,7 @@ class Gameplay extends React.Component {
         />
         }
         {this.state.showEndScreen &&
-        <RoundTwo
+        <EndScreen
           score={this.state.score}
         />
         }
