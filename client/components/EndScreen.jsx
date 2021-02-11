@@ -13,7 +13,7 @@ class EndScreen extends React.Component {
     return (
       <div>
         <h1>
-          Wow! You scored {this.props.score}! Great Job!
+          Wow! You scored {this.props.score} points! Great Job!
         </h1>
       </div>
     )

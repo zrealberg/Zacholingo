@@ -64,8 +64,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Zacholingo</h1>
+      <div class='application'>
+        <h1 class='header'>Zacholingo</h1>
         <div>
           {this.state.showStart && (
             <Start
