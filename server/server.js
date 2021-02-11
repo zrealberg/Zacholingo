@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const translator = require('./translator');
-const wordFetcher = require('./spanishWords')
+const wordFetcher = require('./spanishWds')
 
 
 const path = require('path');
